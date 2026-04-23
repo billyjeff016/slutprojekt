@@ -1,0 +1,26 @@
+nav{
+background-color: lightseagreen;
+}
+
+nav ul {
+    display: flex; /* add if you want align-items/justify-content to work */
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul li {
+    list-style: none;
+}
+button{
+    border: 1px solid #000;  /* 1px width, solid style, black color */
+    border-radius: 5px; 
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;      /* optional: gives the element some size so border is visible */
+    width: 100px;
+    height: 50px;
+}
+button:hover {
+    background-color: lightblue; 
+    transform: scale(0.95); 
+}
