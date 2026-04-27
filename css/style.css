@@ -1,5 +1,5 @@
 nav{
-background-color: lightseagreen;
+background-color: black;
 }
 
 nav ul {
@@ -10,17 +10,31 @@ nav ul {
 
 nav ul li {
     list-style: none;
+    transition: all 0.3s ease; /* smooth transition for hover effects */
+    padding: 10px 15px; /* optional: gives the element some size so*/
 }
 button{
-    border: 1px solid #000;  /* 1px width, solid style, black color */
+    border: 1px solid #000;  
     border-radius: 5px; 
     align-items: center;
     justify-content: center;
     padding: 6px 10px;      /* optional: gives the element some size so border is visible */
     width: 100px;
     height: 50px;
+    background-color: black;
+    color: white;
+    font: sans-serif;
 }
 button:hover {
-    background-color: lightblue; 
-    transform: scale(0.95); 
+    transform: scale(1.2); 
+}
+.box{
+    border: 1px solid #000;  
+    border-radius: 5px; 
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;      /* optional: gives the element some size so border is visible */
+    background-color: lightgray;
+    color: black;
+    font: sans-serif;
 }
