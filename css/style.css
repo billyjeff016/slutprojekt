@@ -1,5 +1,10 @@
+body{
+    background: #001e4d;
+    position: relative;
+}
 nav{
 background-color: black;
+opacity: 50%;
 }
 
 nav ul {
@@ -15,7 +20,7 @@ nav ul li {
 }
 li button{
     border: 1px solid #000;  
-    border-radius: 5px; 
+    border-radius: 10px; 
     align-items: center;
     justify-content: center;
     padding: 6px 10px;      /* optional: gives the element some size so border is visible */
@@ -24,19 +29,22 @@ li button{
     background-color: black;
     color: white;
     font: sans-serif;
+    transition: all 0.3s ease; /* smooth transition for hover effects */
 }
 li button:hover {
     transform: scale(1.2); 
+    background-color: white;
+    color: black;
 }
 .box{
     border: 1px solid #000;  
     border-radius: 5px; 
-    align-items: center;
-    justify-content: center;
-    padding: 6px 10px;      /* optional: gives the element some size so border is visible */
+    padding: 6px 10px;
     background-color: lightgray;
     color: black;
     font: sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 .app{
     background: #fff;
@@ -75,9 +83,12 @@ li button:hover {
     cursor: pointer;
     transition: all 0.3s;
 }
-.btn:hover{
+.btn:hover:not([disabled]){
 background: #222;
 color: #fff;
+}
+.btn:disabled{
+    cursor:default;
 }
 #next-btn{
     background: #001e4d;
@@ -91,4 +102,23 @@ color: #fff;
     border-radius: 4px;
     cursor: pointer;
     display: block;
+}
+.correct{
+    background-color: #4CAF50;
+    color: white;
+}
+.incorrect{
+    background-color: #f44336;
+    color: white;
+}
+.footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
 }
