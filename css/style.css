@@ -1,22 +1,31 @@
 body{
-    background: #001e4d;
     position: relative;
+      background: linear-gradient(135deg, #a30808, #19b64d, #001e4d); 
+  background-size: 400% 400%; /* make the background larger than the viewport for animation */
+  animation: bgMove 5s ease infinite; /* animation for background movement */
+
+}
+@keyframes bgMove {
+  0%   { background-position: 0% 50%; } /* start position */
+  50%  { background-position: 100% 50%; } /* move to the right */
+  100% { background-position: 0% 50%; } /* return to start position */
 }
 nav{
 background-color: black;
 opacity: 50%;
+border-radius: 10px;
 }
 
 nav ul {
     display: flex; /* add if you want align-items/justify-content to work */
     align-items: center;
     justify-content: space-between;
+        padding: 5px 10px;
 }
 
 nav ul li {
     list-style: none;
-    transition: all 0.3s ease; /* smooth transition for hover effects */
-    padding: 10px 15px; /* optional: gives the element some size so*/
+    transition: all 0.3s ease; /* smooth transition for hover effects */ 
 }
 li button{
     border: 1px solid #000;  
@@ -36,7 +45,8 @@ li button:hover {
     background-color: white;
     color: black;
 }
-.box{
+/* This is for the quiz answers*/
+.box{ 
     border: 1px solid #000;  
     border-radius: 5px; 
     padding: 6px 10px;
@@ -46,6 +56,7 @@ li button:hover {
     max-width: 1000px;
     margin: 0 auto;
 }
+/* This is for the quiz questions and answers*/
 .app{
     background: #fff;
     width: 90%;
@@ -54,6 +65,7 @@ li button:hover {
     border-radius: 10px;
     padding: 30px;
 }
+/* This is for the quiz title*/
 .app h1{
     font-size: 25px;
     color:#001e4d;
@@ -70,6 +82,7 @@ li button:hover {
     color: #001e4d;
     font-weight: 600;
 }
+/* This is for the quiz answer buttons*/
 .btn{
     background:#fff;
     color: #222;
@@ -121,4 +134,43 @@ color: #fff;
     align-items: center;
     justify-content: center;
     margin-top: auto;
+}
+.boxSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.smallBox1,.smallBox2,.smallBox3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.smallBox1{
+    width: 30%;
+    height: 150px;
+    background-color: rgb(34, 165, 34);
+    border: 1px solid rgb(34, 165, 34);  
+    box-shadow: 5px 5px 10px rgb(24, 112, 24);
+    border-radius: 10px; 
+    color: rgb(3, 83, 3);
+}
+.smallBox2{
+    width: 30%;
+    height: 150px;
+    background-color: rgb(165, 34, 34);
+    border: 1px solid rgb(165, 34, 34);  
+    box-shadow: 5px 5px 10px rgb(112, 24, 24);
+    border-radius: 10px; 
+    color: rgb(100, 11, 11);
+}
+.smallBox3{
+    width: 30%;
+    height: 150px;
+    background-color: rgb(10, 61, 172);
+    border: 1px solid rgb(10, 61, 172);  
+    box-shadow: 5px 5px 10px rgb(8, 44, 122);
+    border-radius: 10px; 
+    color: rgb(13, 13, 109);
 }

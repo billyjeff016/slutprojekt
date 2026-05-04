@@ -1,37 +1,37 @@
 // Skapar en array av frågor och svar
 const question = [
     {
-        question:"What does '...' mean in English?",
+        question:"What does 'Interdependence' mean?",
         answers:[
-            {text:"Hello", correct:false},
-            {text:"Goodbye", correct:false},
-            {text:"Please", correct:true},
-            {text:"Thank you", correct:false},
+            {text:"A. Being completely independent from others", correct:false},
+            {text:"B. A situation where things rely on each other", correct:true},
+            {text:"C. Depending only on yourself", correct:false},
+            {text:"D. Controlling others completely", correct:false},
         ]
     },
     {
-         question:"What does '...' mean in English?",
+         question:"What does 'Containerization' mean?",
         answers:[
-            {text:"Hello", correct:true},
-            {text:"Goodbye", correct:false},
-            {text:"Please", correct:false},
-            {text:"Thank you", correct:false},
+            {text:"A. Packing goods into standardized containers for transport", correct:true},
+            {text:"B. Producing goods locally in small batches", correct:false},
+            {text:"C. Breaking goods into smaller pieces", correct:false},
+            {text:"D. Storing items randomly without structure", correct:false},
         ]
     }, {
-         question:"What does '...' mean in English?",
+         question:"What does 'Globalization' mean?",
         answers:[
-            {text:"Hello", correct:false},
-            {text:"Goodbye", correct:true},
-            {text:"Please", correct:false},
-            {text:"Thank you", correct:false},
+            {text:"A. The process of increasing global interconnectedness", correct:true},
+            {text:"B. The act of becoming more localized", correct:false},
+            {text:"C. The reduction of cultural differences", correct:false},
+            {text:"D. The increase of local production", correct:false},
         ]
     }, {
-         question:"What does '...' mean in English?",
+         question:"What does 'Localization' mean?",
         answers:[
-            {text:"Hello", correct:false},
-            {text:"Goodbye", correct:false},
-            {text:"Please", correct:false},
-            {text:"Thank you", correct:true},
+            {text:"A. The process of adapting products or services to meet the specific needs of a local market", correct:true},
+            {text:"B. The process of expanding into new international markets", correct:false},
+            {text:"C. The process of standardizing products or services for global distribution", correct:false},
+            {text:"D. The process of reducing the size of a product or service", correct:false},
         ]
     },
 ];
@@ -58,17 +58,17 @@ function showQuestion(){
     resetState();
     let currentQuestion = question[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
-    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+    questionElement.innerHTML = questionNo + ". " + currentQuestion.question; // Visar frågan och numret
 
     currentQuestion.answers.forEach(answer => {
         const button = document.createElement("button");
-        button.innerHTML = answer.text;
-        button.classList.add("btn");
-        answerButtons.appendChild(button);
+        button.innerHTML = answer.text; // Visar texten på knappen
+        button.classList.add("btn"); // Lägger till en klass för stylin
+        answerButtons.appendChild(button); // Lägger till knappen i answerButtons-diven
         if(answer.correct){
-            button.dataset.correct = answer.correct;
+            button.dataset.correct = answer.correct; // Lägger till en data-attribut för att markera rätt svar
         }
-        button.addEventListener("click", selectAnswer);
+        button.addEventListener("click", selectAnswer); // Lägger till en event listener för att hantera när användaren klickar på ett svar
     });
 }
 
@@ -76,27 +76,27 @@ function showQuestion(){
 function resetState(){
     nextButton.style.display = "none";
     while(answerButtons.firstChild){
-        answerButtons.removeChild(answerButtons.firstChild);
+        answerButtons.removeChild(answerButtons.firstChild);// Tar bort alla svarsknappar från föregående fråga
     }
 }
 
 // Funktion som hanterar när användaren klickar på ett svar
 function selectAnswer(e){
-    const selectedBtn = e.target;
-    const isCorrect = selectedBtn.dataset.correct === "true";
+    const selectedBtn = e.target; // Hämta den knapp som användaren klickade på
+    const isCorrect = selectedBtn.dataset.correct === "true"; // Kolla om det valda svaret är korrekt
     if(isCorrect){
         selectedBtn.classList.add("correct");
         score++;
     } else{
         selectedBtn.classList.add("incorrect");
     }
-    Array.from(answerButtons.children).forEach(button => {
+    Array.from(answerButtons.children).forEach(button => { // Gå igenom alla svarsknappar
         if(button.dataset.correct === "true"){
             button.classList.add("correct");
         }
-        button.disabled = true;
+        button.disabled = true; // Inaktivera alla knappar efter att ett svar har valts
     });
-    nextButton.style.display = "block";
+    nextButton.style.display = "block"; // Visa nästa-knappen efter att ett svar har valts
 }
 
 // Funktion som visar den slutliga poängen
@@ -120,9 +120,9 @@ function handleNextButton(){
 // Event listener för nästa-knappen
 nextButton.addEventListener("click", () => {
     if(currentQuestionIndex < question.length){
-        handleNextButton();
+        handleNextButton(); // Gå till nästa fråga
     }else{
-        startQuiz();
+        startQuiz(); // Starta om quizet
     }
 });
 
