@@ -1,8 +1,8 @@
 body{
     position: relative;
-      background: linear-gradient(135deg, #a30808, #19b64d, #001e4d); 
+      background: linear-gradient(135deg, rgb(85, 1, 85), rgb(201, 138, 149), darkblue); 
   background-size: 400% 400%; /* make the background larger than the viewport for animation */
-  animation: bgMove 5s ease infinite; /* animation for background movement */
+  animation: bgMove 15s ease infinite; /* animation for background movement */
 
 }
 @keyframes bgMove {
@@ -63,7 +63,7 @@ li button:hover {
     max-width: 600px;
     margin: 100px auto 0;
     border-radius: 10px;
-    padding: 30px;
+    padding: 2%;
 }
 /* This is for the quiz title*/
 .app h1{

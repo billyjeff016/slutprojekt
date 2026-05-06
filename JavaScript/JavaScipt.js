@@ -40,6 +40,9 @@ const question = [
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
+const nameTxt = document.getElementById("name");
+const submitBtn = document.getElementById("submit-btn");
+const nameQuestion = document.getElementById("name-question");
 
 // Variabler för att hålla koll på nuvarande fråga och poäng
 let currentQuestionIndex = 0;
@@ -65,6 +68,9 @@ function showQuestion(){
         button.innerHTML = answer.text; // Visar texten på knappen
         button.classList.add("btn"); // Lägger till en klass för stylin
         answerButtons.appendChild(button); // Lägger till knappen i answerButtons-diven
+        nameTxt.style.display = "none"; // Döljer namn-inputen tills användaren har valt ett svar
+        submitBtn.style.display = "none"; // Döljer submit-knappen tills quizet är klart
+        nameQuestion.style.display = "none"; // Döljer namn-frågan tills quizet är klart
         if(answer.correct){
             button.dataset.correct = answer.correct; // Lägger till en data-attribut för att markera rätt svar
         }
@@ -103,6 +109,8 @@ function selectAnswer(e){
 function showScore(){
     resetState();
     questionElement.innerHTML = `You scored ${score} out of ${question.length}!`;
+    nameTxt.innerHTML = ""; // Tömmer namn-inputen
+    submitBtn.innerHTML = "Submit"; // Döljer submit-knappen
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
 }
@@ -110,9 +118,12 @@ function showScore(){
 // Funktion som hanterar nästa-knappen
 function handleNextButton(){
     currentQuestionIndex++;
-    if(currentQuestionIndex < question.length){
+    if(currentQuestionIndex < question.length){//
         showQuestion();
     }else{
+        nameQuestion.style.display = "block"; // Visar namn-frågan
+        nameTxt.style.display = "block"; // Visar namn-inputen
+        submitBtn.style.display = "block"; // Visar submit-knappen
         showScore();
     }
 }
