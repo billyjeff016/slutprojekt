@@ -48,6 +48,11 @@ const nameQuestion = document.getElementById("name-question");
 let currentQuestionIndex = 0;
 let score = 0;
 
+function filter(text) {
+    return text.toLowerCase()
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
 // Funktion som startar quizet från början
 function startQuiz(){
     currentQuestionIndex = 0;
@@ -77,7 +82,36 @@ function showQuestion(){
         button.addEventListener("click", selectAnswer); // Lägger till en event listener för att hantera när användaren klickar på ett svar
     });
 }
+// Attach the submit handler to the form (forms fire 'submit', buttons do not)
+const nameForm = document.getElementById("name-form");
+if (nameForm) {
+    nameForm.addEventListener("submit", function(e) {
+        e.preventDefault(); // Förhindrar att formuläret skickas (sida refresahas inte)
+        submitBtnClick(); // Anropar funktionen för att hantera submit-knappen
+    });
+}
+ 
+function submitBtnClick(){
+    // If there's no name entered yet, show the form so the user can type it.
+    let userName = "";
+    if (nameTxt && nameTxt.value) {
+        userName = filter(nameTxt.value.trim()); // Använder filter-funktionen för att sanera användarens input
+    }
+    if (userName === "") {
+        nameQuestion.style.display = "block"; // Visar namn-frågan
+        nameTxt.style.display = "block"; // Visar namn-inputen
+        submitBtn.style.display = "block"; // Visar submit-knappen
+        submitBtn.innerHTML = "Submit";
+        return;
+    }
 
+    // Process the submitted name (form submit handler should reach here)
+    nameQuestion.innerHTML = "Thank you for participating";
+    submitBtn.style.display = "none";
+    nameTxt.style.display = "none";
+    console.log("User's name: " + userName);
+
+}
 // Funktion som återställer tillståndet inför nästa fråga
 function resetState(){
     nextButton.style.display = "none";
@@ -109,10 +143,9 @@ function selectAnswer(e){
 function showScore(){
     resetState();
     questionElement.innerHTML = `You scored ${score} out of ${question.length}!`;
-    nameTxt.innerHTML = ""; // Tömmer namn-inputen
-    submitBtn.innerHTML = "Submit"; // Döljer submit-knappen
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
+    console.log("showScore");
 }
 
 // Funktion som hanterar nästa-knappen
@@ -121,9 +154,8 @@ function handleNextButton(){
     if(currentQuestionIndex < question.length){//
         showQuestion();
     }else{
-        nameQuestion.style.display = "block"; // Visar namn-frågan
-        nameTxt.style.display = "block"; // Visar namn-inputen
-        submitBtn.style.display = "block"; // Visar submit-knappen
+        console.log("handleNextButton");
+        submitBtnClick(); // Visa namn-frågan när quizet är klart
         showScore();
     }
 }
