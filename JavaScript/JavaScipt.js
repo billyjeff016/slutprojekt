@@ -94,7 +94,7 @@ if (nameForm) {
 function submitBtnClick(){
     // If there's no name entered yet, show the form so the user can type it.
     let userName = "";
-    if (nameTxt && nameTxt.value) {
+    if (nameTxt && nameTxt.value)/* Kollar om nameTxt finns och har ett värde*/ {
         userName = filter(nameTxt.value.trim()); // Använder filter-funktionen för att sanera användarens input
     }
     if (userName === "") {
