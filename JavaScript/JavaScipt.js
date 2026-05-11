@@ -37,7 +37,7 @@ const question = [
     ],
   },
 ];
-
+//Prettier gjorde en konstig struktur på frågorna så jag behöll hur de såg ut
 // Hämtar elementen från HTML-dokumentet
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
